@@ -1,0 +1,46 @@
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class FormPanel extends JPanel {
+	
+	private JLabel nameLabel;
+	private JLabel occupationLabel;
+	private JTextField nameTextField;
+	private JTextField occupationTextField;
+	private JButton okButton;
+	
+	public FormPanel() {
+		
+		nameLabel = new JLabel("Name: ");
+		occupationLabel = new JLabel("Occupation: ");
+		nameTextField = new JTextField(10);
+		occupationTextField = new JTextField(10);
+		okButton = new JButton("OK");
+		
+		Dimension dim = getPreferredSize();
+		dim.width = 250;
+		setPreferredSize(dim);
+		
+		Border innerBorder = BorderFactory.createTitledBorder("Simple Swings");
+		Border outerBorder = BorderFactory.createEmptyBorder(5,5,5,5);
+		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
+		
+		setLayout(new GridBagLayout());
+		
+		GridBagConstraints gc = new GridBagConstraints();
+		
+		gc.gridx = 0; gc.gridy = 0;
+		// space taken with relative to other cells
+		gc.weightx = 1; gc.weighty = 1;
+		gc.fill = GridBagConstraints.NONE;
+	}
+
+}

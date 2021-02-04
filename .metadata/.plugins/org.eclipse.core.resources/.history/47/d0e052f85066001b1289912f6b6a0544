@@ -1,0 +1,32 @@
+import java.awt.Dimension;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class FormPanel extends JPanel {
+	
+	private JLabel nameLabel;
+	private JLabel occupationLabel;
+	private JTextField nameTextField;
+	private JTextField occ
+	
+	public FormPanel() {
+		
+		nameLabel = new JLabel();
+		occupationLabel = new JLabel();
+		nameTextField = new JTextField();
+		
+		Dimension dim = getPreferredSize();
+		dim.width = 250;
+		setPreferredSize(dim);
+		
+		Border innerBorder = BorderFactory.createTitledBorder("Simple Swings");
+		Border outerBorder = BorderFactory.createEmptyBorder(5,5,5,5);
+		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
+	}
+
+}
