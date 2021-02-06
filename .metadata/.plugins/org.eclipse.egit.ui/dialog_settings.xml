@@ -11,4 +11,18 @@
 			<item value="400"/>
 		</list>
 	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\wwwsh\Documents\swingsworkspace\.git">
+			<item value="false"/>
+			<item value="Shashank J &lt;shashankreddy231@gmail.com&gt;"/>
+			<item value="Added FormListener to handle formevents."/>
+			<item value="Shashank J &lt;shashankreddy231@gmail.com&gt;"/>
+			<item value="e3650afd8cba7e88287c75f543554d0b11978650"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item value="200,200" key="STAGING_SASH_FORM_WEIGHT"/>
+		<item value="false" key="sortItemState"/>
+		<item value="200,200" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
+	</section>
 </section>
