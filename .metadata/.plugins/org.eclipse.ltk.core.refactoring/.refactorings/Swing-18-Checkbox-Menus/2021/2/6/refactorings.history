@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;MainFrame.java&apos; to &apos;FormEvent.java&apos;&#x0D;&#x0A;- Original project: &apos;Swing-18-Checkbox-Menus&apos;&#x0D;&#x0A;- Destination element: &apos;FormEvent.java&apos;&#x0D;&#x0A;- Original element: &apos;MainFrame.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=Swing-19-Mnemonics-And-Accelerators/src&lt;{FormEvent.java" element1="/src&lt;{MainFrame.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1612629049777" units="1" version="1.0"/>
+</session>

@@ -4,7 +4,7 @@
 		<item value="250" key="dialogHeight"/>
 		<item value="350" key="dialogWidth"/>
 		<list key="textEntries">
-			<item value="1"/>
+			<item value="2"/>
 			<item value="1"/>
 			<item value="1"/>
 		</list>
@@ -19,7 +19,8 @@
 			<item value="org.eclipse.e4.ui.parts"/>
 		</list>
 		<list key="textArray">
-			<item value="clos"/>
+			<item value="close all"/>
+			<item value="close "/>
 			<item value="git"/>
 			<item value="console"/>
 		</list>
