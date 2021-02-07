@@ -1,0 +1,20 @@
+package gui;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
+public class TablePanel extends JPanel {
+	
+	private JTable table;
+	private PersonTableModel personTableModel;
+	
+	public TablePanel() {
+		table = new JTable();
+		personTableModel = new PersonTableModel();
+		setLayout(new BorderLayout());
+		add(table, BorderLayout.CENTER);
+	}
+
+}

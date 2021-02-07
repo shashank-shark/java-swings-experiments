@@ -1,0 +1,30 @@
+package controller;
+
+import gui.FormEvent;
+import model.AgeCategory;
+import model.Database;
+import model.Person;
+
+public class Controller {
+	
+	Database database = new Database();
+	
+	public void addPerson(FormEvent e) {
+		String name = e.getName();
+		String occupation = e.getOccupation();
+		int ageCat = e.getAgeCategory();
+		String empCat = e.getEmpCat();
+		String gender = e.getGender();
+		boolean isIndian = e.isIndian();
+		String taxId = e.getTaxId();
+		
+		AgeCategory ageCategory;
+		switch (ageCat) {
+		case 0: {
+			ageCategory = AgeCategory.child;
+		} break;
+		}
+		
+		Person person = new Person(name, occupation, ageCat, empCat, gender, taxId, isIndian);
+	}
+}
