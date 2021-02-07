@@ -4,7 +4,7 @@
 		<item value="250" key="dialogHeight"/>
 		<item value="350" key="dialogWidth"/>
 		<list key="textEntries">
-			<item value="2"/>
+			<item value="1"/>
 			<item value="1"/>
 			<item value="1"/>
 		</list>
@@ -20,7 +20,6 @@
 		</list>
 		<list key="textArray">
 			<item value="close all"/>
-			<item value="close "/>
 			<item value="git"/>
 			<item value="console"/>
 		</list>
