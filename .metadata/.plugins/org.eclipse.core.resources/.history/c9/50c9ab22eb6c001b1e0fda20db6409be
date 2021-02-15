@@ -1,0 +1,23 @@
+import model.AgeCategory;
+import model.Database;
+import model.EmployeeCategory;
+import model.Person;
+
+public class TestDatabase {
+	
+	public static void main(String[] args) {
+		System.out.println("Running Database Tests");
+		Database db = new Database();
+		try {
+			db.connect();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		db.addPerson(new Person("Shashank J",EmployeeCategory.employed, AgeCategory.adult, EmployeeCategory.employed, gender, taxId, isIndianCitizen));
+		
+		
+		db.save();
+		db.disconnect();
+	}
+}

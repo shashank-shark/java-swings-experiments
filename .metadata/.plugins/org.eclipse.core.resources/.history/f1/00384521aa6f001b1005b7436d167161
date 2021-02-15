@@ -1,0 +1,132 @@
+package model;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.mysql.cj.protocol.Resultset;
+
+public class Database {
+	
+	private LinkedList<Person> people;
+	private Connection con;
+	
+	public Database() {
+		people = new LinkedList<Person>();
+	}
+	
+	public void addPerson(Person person) {
+		people.add(person);
+	}
+	
+	public List<Person> getPeople() {
+		return people;
+	}
+	
+	public void saveToFile(File file) throws IOException {
+		FileOutputStream fos = new FileOutputStream(file);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		
+		Person[] persons = people.toArray(new Person[people.size()]);
+		oos.writeObject(persons);
+		oos.close();
+		
+	}
+	
+	public void loadFromFile(File file) throws IOException {
+		FileInputStream fis = new FileInputStream(file);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		try {
+			Person[] persons = (Person[]) ois.readObject();
+			people.clear();
+			people.addAll(Arrays.asList(persons));
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		ois.close();
+	}
+
+	public void removePerson(int index) {
+		people.remove(index);
+	}
+	
+	public void save() {
+		
+		if (con != null) {
+			
+			try {
+				String checkSQL = "select count(*) as count from people where id=?";
+				PreparedStatement saveStatement = con.prepareStatement(checkSQL);
+				
+				String insertSQL = "insert into people (id, name, age, employment_status, tax_id, indian_citizen, gender, occupation) values (?, ?, ?, ?, ?, ?, ?, ?)";
+				PreparedStatement insertStatement = con.prepareStatement(insertSQL);
+				
+				for (Person person : people) {
+					int id = person.getId();
+					saveStatement.setInt(1, id);
+					
+					String name = person.getName();
+					String occupation = person.getOccupation();
+					String ageCategory = person.getAgeCategory().name();
+					String empCat = person.getEmpCat().name();
+					String taxId = person.getTaxId();
+					boolean isIndianCitizen = person.isIndianCitizen();
+					String gender = person.getGender().name();
+					
+					ResultSet checkResult = saveStatement.executeQuery();
+					checkResult.next();
+					
+					int count = checkResult.getInt(1);
+					
+					if (count == 0) {
+						System.out.println("Inserting Person with ID : " + id);
+						
+					} else {
+						System.out.println("Updating Person with ID : " + id);
+					}
+				} 
+			} catch(SQLException sqlException) {
+				sqlException.printStackTrace();
+			}
+		}
+	}
+
+	public void connect() throws Exception {
+		
+		if (con != null) return;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new Exception("Driver not found");
+		}
+		
+		String connectionUrl = "jdbc:mysql://localhost:3306/swingtest";
+		con = DriverManager.getConnection(connectionUrl, "root", "root");
+		System.out.println("Connection is successfully made for database : " + con.getCatalog());
+	}
+
+	public void disconnect() {
+		try {
+			if (con != null)
+				con.close();
+			System.out.println("Connection successfully closed : ");
+		} catch (SQLException e) {
+			System.out.println("Cannot close the connection : ");
+			e.printStackTrace();
+		}
+	}
+}
